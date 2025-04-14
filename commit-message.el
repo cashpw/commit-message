@@ -156,7 +156,7 @@ This set is based on https://www.conventionalcommits.org/en/v1.0.0."
 
 Optionally put cursor at CURSOR."
   (insert
-   (funcall commit-message-pattern-fn))
+   (funcall commit-message-builder-fn))
   (commit-message-place-cursor))
 
 (defcustom commit-message-cursor-target "CURSOR"
