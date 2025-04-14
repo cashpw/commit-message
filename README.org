@@ -1,0 +1,6 @@
+:PROPERTIES:
+:LAST_MODIFIED: [2025-04-14 Mon 08:41]
+:END:
+#+title: commit-message
+
+A utility to build commit messages irrespective of source control choice.
