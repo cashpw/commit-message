@@ -75,12 +75,12 @@
 
 This set is based on https://www.conventionalcommits.org/en/v1.0.0."
   :group 'commit-message
-  :type (repeat 'sexp))
+  :type '(repeat sexp))
 
 (defcustom commit-message-scopes '()
   "List of scopes."
   :group 'commit-message
-  :type (repeat 'sexp))
+  :type '(repeat sexp))
 
 (defcustom commit-message-scopes-accrue t
   "Add new scopes to `commit-message-scopes' when non-nil."
