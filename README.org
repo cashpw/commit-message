@@ -1,5 +1,5 @@
 :PROPERTIES:
-:LAST_MODIFIED: [2025-06-12 Thu 08:48]
+:LAST_MODIFIED: [2025-06-12 Thu 08:49]
 :END:
 #+title: commit-message
 
@@ -7,7 +7,7 @@ A utility to build commit messages irrespective of source control choice.
 
 * Commit message builder
 
-By default (=commit-message-defualt-message-builder=) we prompt the user for a category (=commit-message-read-category=), a scope (=commit-message-read-scope=), and whether or not the commit is a breaking change (=commmit-message-read-breaking=). The commit message is formatted as =<category>(<scope>):= for non-breaking changes and =<category>(<scope>)!:= for breaking changes.
+By default (=commit-message-defualt-message-builder=), and modeled after [[https://www.conventionalcommits.org/en/v1.0.0/][conventional commits]], we prompt the user for a category (=commit-message-read-category=), a scope (=commit-message-read-scope=), and whether or not the commit is a breaking change (=commmit-message-read-breaking=). The commit message is formatted as =<category>(<scope>):= for non-breaking changes and =<category>(<scope>)!:= for breaking changes.
 
 * Usage
 
