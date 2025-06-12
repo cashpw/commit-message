@@ -75,12 +75,12 @@
 
 This set is based on https://www.conventionalcommits.org/en/v1.0.0."
   :group 'commit-message
-  :type (repeat 'sexp))
+  :type '(repeat sexp))
 
 (defcustom commit-message-scopes '()
   "List of scopes."
   :group 'commit-message
-  :type (repeat 'sexp))
+  :type '(repeat sexp))
 
 (defcustom commit-message-scopes-accrue t
   "Add new scopes to `commit-message-scopes' when non-nil."
@@ -202,10 +202,8 @@ See `commit-message-place-cursor'."
         (case-fold-search nil))
     (goto-char (point-min))
     (let ((sf (search-forward commit-message-cursor-target nil t)))
-      (message "end point: %s" sf)
       (if (not sf)
           (goto-char original-point)
-        (message "start point (0): %s" (match-beginning 0))
         (let ((cursor-point (match-beginning 0)))
           (replace-match "")
           (insert " ")
