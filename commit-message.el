@@ -151,6 +151,35 @@ This set is based on https://www.conventionalcommits.org/en/v1.0.0."
   :group 'commit-message
   :type 'function)
 
+(defcustom commit-message-comment-prefix "#"
+  "Comment prefix character."
+  :group 'commit-message
+  :type 'string)
+
+(defun commit-message--comment-p (str)
+  "Return non-nil if STR is commented out."
+  (string-prefix-p commit-message-comment-prefix str))
+
+(defun commit-message--commit-empty-p ()
+  "Return non-nil if the buffer contains an empty commit message.
+
+An empty commit message is one in which all lines are either commented out or
+empty."
+  (not
+   (seq-find
+    (lambda (line)
+      (and
+       (not (string-empty-p line))
+       (not (commit-message--comment-p line))))
+    (string-split (buffer-string) "\n"))))
+
+(defun commit-message-maybe-insert-message ()
+  "Insert chosen commit message unless there's already one present.
+
+Optionally put cursor at CURSOR."
+  (when (commit-message--commit-empty-p)
+    (commit-message-insert-message)))
+
 (defun commit-message-insert-message ()
   "Insert chosen commit message.
 
