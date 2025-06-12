@@ -1,6 +1,32 @@
 :PROPERTIES:
-:LAST_MODIFIED: [2025-04-14 Mon 08:41]
+:LAST_MODIFIED: [2025-06-12 Thu 08:48]
 :END:
 #+title: commit-message
 
 A utility to build commit messages irrespective of source control choice.
+
+* Commit message builder
+
+By default (=commit-message-defualt-message-builder=) we prompt the user for a category (=commit-message-read-category=), a scope (=commit-message-read-scope=), and whether or not the commit is a breaking change (=commmit-message-read-breaking=). The commit message is formatted as =<category>(<scope>):= for non-breaking changes and =<category>(<scope>)!:= for breaking changes.
+
+* Usage
+
+#+begin_src emacs-lisp
+(use-package!
+    commit-message
+  :custom
+  ;; Optional
+  (commit-message-categories (list
+                              (commit-message-category
+                               :name "Launch"
+                               :short "lanch"
+                               :aliases '("Release"))
+                              ;; ...
+                              ))
+
+  ;; Optional
+  (commit-message-builder-fn #'your-custom-message-builder)
+  :config
+  ;; Add a hook into your source control commit message setup.
+  (add-hook 'git-commit-setup-hook 'commit-message-maybe-insert-message))
+#+end_src
